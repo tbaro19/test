@@ -40,8 +40,9 @@ from typing import List, Tuple
 def indexing_methods() -> List[Tuple[str, int, np.ndarray],]:
     db = []
     '''Duyệt tuần tự và đọc các features vector từ file .npy'''
-    print('i_m', tqdm(os.listdir(feature_path)))
+    print('i_m', tqdm(os.listdir(feature_path)), os.listdir(feature_path))
     for feat_npy in tqdm(os.listdir(feature_path)):
+      print('fn', feat_npy)
       video_name = feat_npy.split('.')[0]
       feats_arr = np.load(os.path.join(feature_path , feat_npy), allow_pickle=True)
     for idx, feat in enumerate(feats_arr):
@@ -53,8 +54,8 @@ def indexing_methods() -> List[Tuple[str, int, np.ndarray],]:
 
 # ==================================
 visual_features_db = indexing_methods()
-print()
-print(visual_features_db[0][:2], visual_features_db[0][-1].shape)
+print('db',visual_features_db)
+print('shape',visual_features_db[0][:2], visual_features_db[0][-1].shape)
 def search_engine(query_arr: np.array,
                   db: list,
                   topk:int=10,
