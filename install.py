@@ -40,7 +40,7 @@ from typing import List, Tuple
 def indexing_methods() -> List[Tuple[str, int, np.ndarray],]:
     db = []
     '''Duyệt tuần tự và đọc các features vector từ file .npy'''
-    print(tqdm(os.listdir(feature_path)))
+    print('i_m', tqdm(os.listdir(feature_path)))
     for feat_npy in tqdm(os.listdir(feature_path)):
       video_name = feat_npy.split('.')[0]
       feats_arr = np.load(os.path.join(feature_path , feat_npy), allow_pickle=True)
